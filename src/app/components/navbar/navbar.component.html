@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button (click)="drawer.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>YAHADINI</span>
+    <span class="example-spacer"></span>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search products">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <mat-icon>search</mat-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <span class="example-spacer"></span>
+    <button [matMenuTriggerFor]="lvl1master" [routerLink]="['/auth']" mat-button>Auth</button>
+    <mat-menu #lvl1master="matMenu">
+        <button mat-menu-item [routerLink]="['/auth/login']">Login</button>
+        <button  mat-menu-item [routerLink]="['/auth/register']" >Register</button>
+    </mat-menu>
+  
+    <button (click)="badgevisibility()"  mat-icon-button>
+        <mat-icon matBadgeColor="accent" matBadge="15" [matBadgeHidden]="badgevisible" matBadgeSize="small">shopping_cart</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="true" mode="side" position="start">
+    <mat-nav-list>
+        <mat-list-item>
+            <button   mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button [routerLink]="['/products']"  mat-button><mat-icon>list</mat-icon> Products</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button [routerLink]="['/cart']"  mat-button><mat-icon>shopping_cart</mat-icon> Cart</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button ><mat-icon>settings</mat-icon> Settings</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button><mat-icon>login</mat-icon> Login</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button [routerLink]="['/auth/login']" ><mat-icon>logout</mat-icon> Logout</button>
+        </mat-list-item>
+    </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center;min-height: 600px;">
+            <router-outlet></router-outlet>
+            </div>
+    </mat-drawer-content>
+</mat-drawer-container>
