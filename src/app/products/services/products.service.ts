@@ -15,11 +15,12 @@ export class ProductsService {
   getAllCategories(){
     return this.HttpClient.get('https://fakestoreapi.com/products/categories');
   }
+
+  
 // Filter Categories Use Item:
   filterByCategoryUseItem(category: string): void {
     this.getCategoriesByName(category);
   }
-
   
   getCategoriesByName(keysName : string){
     return this.HttpClient.get('https://fakestoreapi.com/products/category/'+keysName);
@@ -29,5 +30,9 @@ export class ProductsService {
   
   getProductById(id:any){
     return this.HttpClient.get('https://fakestoreapi.com/products/'+id);
+  }
+
+  createProduct(model:any){
+    return this.HttpClient.post('https://fakestoreapi.com/products',model);
   }
 }

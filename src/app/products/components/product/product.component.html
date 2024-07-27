@@ -1,5 +1,5 @@
 <div class="card">
-    <img src="{{ data.image }}" alt="image" [routerLink]="['/productDetails/', data.id]" />
+    <!-- <img src="{{ data.image }}" alt="image" [routerLink]="['/productDetails/', data.id]" />
     <h1 class="titleOne">{{ data.title | uppercase | slice:0:20 }}</h1>
     <p class="titleTwo">{{ data.description | slice:0:20}}</p>
     <p><strong>Price:</strong> ${{ data.price }}</p>
@@ -8,6 +8,9 @@
     <div class="d-flex w-60 justify-content-between" *ngIf="showButton" >
       <input type="number" class="form-control" [(ngModel)]="amount" min="1" />
       <button class="btn btn-primary" (click)="addProduct(); showButton = false" >Add</button>
-    </div>
+    </div> -->
+
+  
+    
 
   </div>

@@ -8,7 +8,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatCommonModule} from '@angular/material/core';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -46,7 +46,11 @@ import {MatListModule} from '@angular/material/list';
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatCommonModule
+    MatCommonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
   ],
   exports: [
     MatBadgeModule,
@@ -68,7 +72,11 @@ import {MatListModule} from '@angular/material/list';
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatCommonModule
+    MatCommonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
   ]
 })
 export class MaterialModule { }

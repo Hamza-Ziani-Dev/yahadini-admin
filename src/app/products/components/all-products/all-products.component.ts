@@ -7,11 +7,29 @@ import { NgFor, NgIf } from '@angular/common';
 import { SharedModule } from '../../../shared/shared/shared.module';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../../models/product';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductsComponent } from '../../../dialogs/products/products.component';
+import { UpdateProductComponent } from '../../../dialogs/update-product/update-product.component';
+
+export interface product {
+  title : string;
+  category : string;
+  description : string;
+  price : string;
+  image : string;
+}
 
 @Component({
   selector: 'app-all-products',
   standalone: true,
-  imports: [ProductsModule, MaterialModule, SpinnerComponent, NgFor, NgIf, SharedModule, ProductComponent],
+  imports: [
+     ProductsModule,
+     MaterialModule,
+     SpinnerComponent,
+     NgFor, 
+     NgIf, 
+     SharedModule, 
+     ProductComponent],
   templateUrl: './all-products.component.html',
   styleUrls: ['./all-products.component.css'],
 })
@@ -23,22 +41,17 @@ export class AllProductsComponent implements OnInit {
   isLoading: boolean = false;
   addButton: boolean = false;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    public dialog: MatDialog,
+    public dialogUpdate: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllProducts();
     this.getAllCategories();
   }
-
-  one() {
-    console.log('One clicked');
-    alert('One');
-  }
-
-  two() {
-    console.log('Two clicked');
-    alert('Two');
-  }
+ 
+ 
 
   getAllProducts() {
     this.isLoading = true;
@@ -113,9 +126,6 @@ export class AllProductsComponent implements OnInit {
     );
   }
 
-  showAddToCart(product: any) {
-    this.addButton = true;
-  }
 
   addToCart(event: any) {
     if ('cart' in localStorage) {
@@ -138,6 +148,28 @@ export class AllProductsComponent implements OnInit {
     // this.amount = 1;
   }
 
+
+// open dialog
+  openDialog() {
+    this.dialog.open(ProductsComponent, {
+      width: '900px',
+      height: '500px',
+      data: this.products
+    });
+  }
+
+    // open dialog
+openDialogUpdate(items :any) {
+  console.log(items);
+  this.dialogUpdate.open(UpdateProductComponent, {
+    width: '900px',
+    height: '500px',
+    data: {
+      products :this.products,
+      categories : this.categories
+    }
+  });
+}
  
  
 }
